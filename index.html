@@ -15,7 +15,6 @@
     body {
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
-      /* Using the dynamic background from the sign-up page */
       background: linear-gradient(115deg, #0f0c29, #302b63, #24243e);
       display: flex;
       justify-content: center;
@@ -51,7 +50,7 @@
     }
 
     /* --- SIGN-UP PAGE STYLES --- */
-    .signup-box {
+    #signup-section {
       width: 90%;
       max-width: 400px;
       padding: 40px;
@@ -61,16 +60,27 @@
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
       text-align: center;
       position: relative;
+      transition: all 0.5s ease;
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    .signup-box h2 {
+    #signup-section.hidden {
+      opacity: 0;
+      transform: translateY(-50px);
+      pointer-events: none;
+      height: 0;
+      padding: 0;
+      margin: 0;
+    }
+    
+    #signup-section h2 {
       font-size: 2em;
       margin-bottom: 30px;
       color: #00ffff;
       text-shadow: 0 0 10px #00ffff;
     }
 
-    .signup-box input {
+    #signup-section input {
       width: 100%;
       padding: 12px;
       margin-bottom: 20px;
@@ -82,13 +92,13 @@
       transition: transform 0.3s ease;
     }
 
-    .signup-box input:focus {
+    #signup-section input:focus {
       outline: none;
       transform: scale(1.02);
       box-shadow: 0 0 10px #00c9ff88;
     }
 
-    .signup-box button {
+    #signup-section button {
       width: 100%;
       padding: 14px;
       margin-top: 20px;
@@ -103,33 +113,60 @@
       box-shadow: 0 0 15px #ff416c;
     }
 
-    .signup-box button:hover {
+    #signup-section button:hover {
       background: linear-gradient(to right, #ff4b2b, #ff416c);
       box-shadow: 0 0 20px #ff4b2b;
     }
 
-    /* --- HI PAGE STYLES (HIDDEN BY DEFAULT) --- */
-    .hi-section {
+    /* --- "CODE EXPLAINED" PAGE STYLES --- */
+    #hi-section {
       display: none;
-      text-align: center;
+      width: 100%;
+      max-width: 800px;
+      text-align: left;
       padding: 40px;
-      max-width: 90%;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.5s ease;
+      opacity: 0;
+      transform: scale(0.9);
+      animation: scaleIn 0.5s ease forwards;
     }
-    
-    .hi-section h1 {
-      font-size: 3rem;
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    #hi-section h1 {
+      font-size: clamp(2rem, 8vw, 3rem);
+      margin-bottom: 30px;
       color: #00ffff;
       text-shadow: 0 0 15px #00ffff;
-      margin-bottom: 20px;
+      text-align: center;
     }
-
-    .hi-section p {
-      font-size: 1.2rem;
+    #hi-section h2 {
+      font-size: clamp(1.5rem, 5vw, 2em);
+      margin-top: 30px;
+      color: #ffcc00;
+      text-shadow: 0 0 8px #ffcc00;
+    }
+    #hi-section p {
+      font-size: clamp(1rem, 3vw, 1.1em);
       line-height: 1.6;
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    #hi-section pre {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      border-left: 5px solid #ff416c;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin-top: 10px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
     
     /* Message Box styling */
@@ -180,10 +217,48 @@
     </form>
   </div>
 
-  <!-- "Hi" Page Section (Initially hidden) -->
+  <!-- "Code Explained" Page Section (Initially hidden) -->
   <div class="hi-section" id="hi-section">
-    <h1>Welcome!</h1>
-    <p>Your account has been created successfully. Explore our site!</p>
+    <h1>💡 Programming Code Explained</h1>
+
+    <h2>1. HTML</h2>
+    <p>HTML (HyperText Markup Language) is used to structure web content. Think of it as the skeleton of a website.</p>
+    <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Web Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+
+    <h2>2. CSS</h2>
+    <p>CSS (Cascading Style Sheets) is used for styling HTML elements. It's like the skin, clothes, and makeup for the skeleton, making it look beautiful.</p>
+    <pre>
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+p {
+  color: yellow;
+  font-size: 18px;
+}
+    </pre>
+
+    <h2>3. JavaScript</h2>
+    <p>JavaScript is used to make web pages interactive. It's the brain that adds functionality, like animations, buttons, and user interaction.</p>
+    <pre>
+&lt;script&gt;
+  document.addEventListener("DOMContentLoaded", function() {
+    console.log("The page is fully loaded and ready!");
+  });
+&lt;/script&gt;
+    </pre>
   </div>
   
   <!-- Custom message box for alerts -->
@@ -207,9 +282,11 @@
 
       if (password !== confirmPassword) {
         messageText.innerText = "Error: Passwords do not match!";
+        messageBox.style.boxShadow = '0 0 20px rgba(255, 65, 108, 0.5)';
         signupSuccessful = false;
       } else {
-        messageText.innerText = "✅ Account created successfully!";
+        messageText.innerText = "✅ Account created successfully! Click 'OK' to continue.";
+        messageBox.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.5)';
         event.target.reset(); // Clear the form
         signupSuccessful = true;
       }
@@ -232,6 +309,12 @@
       
       signupSection.style.display = 'none';
       hiSection.style.display = 'block';
+      
+      // To add a fade-in animation
+      setTimeout(() => {
+        hiSection.style.opacity = '1';
+        hiSection.style.transform = 'scale(1)';
+      }, 10);
     }
   </script>
 </body>
