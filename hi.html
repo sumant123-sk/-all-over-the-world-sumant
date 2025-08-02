@@ -26,6 +26,17 @@
             background-size: cover;
             background-position: center;
         }
+
+        /* Glowing animation for the selected cards */
+        @keyframes glowing {
+            0% { box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0ff; }
+            50% { box-shadow: 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff; }
+            100% { box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0ff; }
+        }
+
+        .glowing-card {
+            animation: glowing 1.5s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -54,26 +65,26 @@
                 <p class="text-slate-400">Learn about HTML, CSS, and JavaScript.</p>
             </a>
             
-            <!-- Link to game.html -->
-            <a href="game.html" class="block bg-slate-800 hover:bg-slate-700 transition duration-300 rounded-lg shadow-xl overflow-hidden p-6 text-center transform hover:scale-105 group">
+            <!-- Link to game.html with glowing effect -->
+            <a href="game.html" class="block bg-slate-800 hover:bg-slate-700 transition duration-300 rounded-lg shadow-xl overflow-hidden p-6 text-center transform hover:scale-105 group glowing-card">
                 <h2 class="text-2xl font-semibold mb-2 text-yellow-300 group-hover:text-yellow-200">Mini Games</h2>
                 <p class="text-slate-400">Play a variety of mini-games.</p>
             </a>
 
-            <!-- Link to news.html -->
-            <a href="news.html" class="block bg-slate-800 hover:bg-slate-700 transition duration-300 rounded-lg shadow-xl overflow-hidden p-6 text-center transform hover:scale-105 group">
+            <!-- Link to news.html with glowing effect -->
+            <a href="news.html" class="block bg-slate-800 hover:bg-slate-700 transition duration-300 rounded-lg shadow-xl overflow-hidden p-6 text-center transform hover:scale-105 group glowing-card">
                 <h2 class="text-2xl font-semibold mb-2 text-pink-300 group-hover:text-pink-200">Global News</h2>
                 <p class="text-slate-400">Stay updated with the latest news.</p>
             </a>
 
-            <!-- Link to book.html -->
-            <a href="book.html" class="block bg-slate-800 hover:bg-slate-700 transition duration-300 rounded-lg shadow-xl overflow-hidden p-6 text-center transform hover:scale-105 group">
+            <!-- Link to book.html with glowing effect -->
+            <a href="book.html" class="block bg-slate-800 hover:bg-slate-700 transition duration-300 rounded-lg shadow-xl overflow-hidden p-6 text-center transform hover:scale-105 group glowing-card">
                 <h2 class="text-2xl font-semibold mb-2 text-purple-300 group-hover:text-purple-200">Story Book</h2>
                 <p class="text-slate-400">Read engaging short stories.</p>
             </a>
             
-            <!-- Link to mythology.html -->
-            <a href="mythology.html" class="block bg-slate-800 hover:bg-slate-700 transition duration-300 rounded-lg shadow-xl overflow-hidden p-6 text-center transform hover:scale-105 group">
+            <!-- Link to mythology.html with glowing effect -->
+            <a href="mythology.html" class="block bg-slate-800 hover:bg-slate-700 transition duration-300 rounded-lg shadow-xl overflow-hidden p-6 text-center transform hover:scale-105 group glowing-card">
                 <h2 class="text-2xl font-semibold mb-2 text-orange-300 group-hover:text-orange-200">Ancient Myths</h2>
                 <p class="text-slate-400">Explore classic mythological tales.</p>
             </a>
